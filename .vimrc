@@ -9,6 +9,8 @@ set listchars=tab:>>,trail:.,extends:>
 set expandtab
 set backspace=indent,eol,start
 set ruler " show line number of cursor
+filetype plugin indent on
+syntax on
 let &winheight = &lines * 7 / 10
 
 " Common file tab settings
@@ -126,9 +128,6 @@ au BufNewFile,BufRead *.py
 \ set expandtab |
 \ set autoindent |
 \ set fileformat=unix
-
-" Alternatively, pass a path where Vundle should install Plugs
-set rtp+=~/.vim/bundle/Vundle.vim
 
 " Start vim-plug configuration now
 call plug#begin("~/.vim/plugged")
@@ -294,7 +293,3 @@ endfunction
 
 " All of your Plugs must be added before the following line
 call plug#end()
-
-" https://github.com/VundleVim/Vundle.vim/issues/16
-filetype plugin indent on
-syntax on
