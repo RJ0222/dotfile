@@ -194,21 +194,6 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" " LanguageClient
-" nnoremap <space>li :call LanguageClient_textDocument_implementation()<CR>
-" nnoremap <space>ld :call LanguageClient#textDocument_definition()<CR>
-" nnoremap <space>lr :call LanguageClient#textDocument_rename()<CR>
-" nnoremap <space>lf :call LanguageClient#textDocument_formatting()<CR>
-" nnoremap <space>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-" nnoremap <space>lx :call LanguageClient#textDocument_references()<CR>
-" nnoremap <space>la :call LanguageClient_workspace_applyEdit()<CR>
-" nnoremap <space>lh :call LanguageClient#textDocument_hover()<CR>
-" nnoremap <space>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-" nnoremap <space>lc :call LanguageClient_textDocument_codeAction()<CR>
-" nnoremap <space>lu :call *LanguageClient#textDocument_documentHighlight()<CR>
-" nnoremap <space>lm :call LanguageClient_contextMenu()<CR>
-" nnoremap <space>pc :pc<CR>
-
 Plug 'nvie/vim-flake8'
 autocmd FileType python map   :call Flake8()
 let g:flake8_ignore="E501,W293,E306"
