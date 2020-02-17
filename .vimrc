@@ -262,9 +262,6 @@ autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 augroup END
 
-" Plug for js
-Plug 'marijnh/tern_for_vim'
-
 " build_go_files is a custom function that builds or compiles the test file.
 " It calls :GoBuild if its a Go file, or :GoTestCompile if it's a test file
 function! s:build_go_files()
@@ -275,6 +272,18 @@ function! s:build_go_files()
       call go#cmd#Build(0)
   endif
 endfunction
+
+" Plug for js
+Plug 'marijnh/tern_for_vim'
+
+Plug 'posva/vim-vue'
+au BufNewFile,BufRead *.html,*.js,*.vue set tabstop=2
+au BufNewFile,BufRead *.html,*.js,*.vue set softtabstop=2
+au BufNewFile,BufRead *.html,*.js,*.vue set shiftwidth=2
+au BufNewFile,BufRead *.html,*.js,*.vue set expandtab
+au BufNewFile,BufRead *.html,*.js,*.vue set autoindent
+au BufNewFile,BufRead *.html,*.js,*.vue set fileformat=unix
+autocmd FileType vue syntax sync fromstart
 
 " All of your Plugs must be added before the following line
 call plug#end()
