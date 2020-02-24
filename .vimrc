@@ -163,18 +163,8 @@ Plug 'chase/vim-ansible-yaml'
 let g:ansible_options = {'ignore_blank_lines': 0}
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
-" Ctrl + P
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-set wildignore+=*.so,*.swp,*.swo,*.zip,*.jar
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'cra'
-
 " Icon
 Plug 'ryanoasis/vim-devicons'
-
-" Let Vundle manage Vundle, required
-Plug 'gmarik/Vundle.vim'
 
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
@@ -214,7 +204,9 @@ let NERDTreeDirArrows=0
 let NERDTreeMapOpenSplit="s"
 let NERDTreeMapOpenVSplit="v"
 let NERDTreeWinSize=40
-Plug 'Xuyuanp/nerdtree-git-Plug'
+
+" https://github.com/junegunn/vim-plug/wiki/faq#whats-the-deal-with-git-in-the-url
+Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
 
 " Automatically open a NERDTree if no files where specified
 autocmd vimenter * if !argc() | NERDTree | endif
@@ -284,6 +276,14 @@ au BufNewFile,BufRead *.html,*.js,*.vue set expandtab
 au BufNewFile,BufRead *.html,*.js,*.vue set autoindent
 au BufNewFile,BufRead *.html,*.js,*.vue set fileformat=unix
 autocmd FileType vue syntax sync fromstart
+
+" Ctrl + P
+Plug 'ctrlpvim/ctrlp.vim'
+set runtimepath^=~/.vim/plugged/ctrlp.vim
+set wildignore+=*.so,*.swp,*.swo,*.zip,*.jar
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'cra'
 
 " All of your Plugs must be added before the following line
 call plug#end()
