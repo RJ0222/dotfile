@@ -207,6 +207,18 @@ let NERDTreeWinSize=40
 
 " https://github.com/junegunn/vim-plug/wiki/faq#whats-the-deal-with-git-in-the-url
 Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
 
 " Automatically open a NERDTree if no files where specified
 autocmd vimenter * if !argc() | NERDTree | endif
