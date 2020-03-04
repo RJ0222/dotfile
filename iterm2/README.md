@@ -30,6 +30,10 @@ shit show completions
 shit show aliases
 
 BASH_PREVIEW=true shit reload
+
+brew install coreutils autojump grep lrzsz ncdu
+brew install mysql-client@5.7
+chown -R rockid:staff /usr/local/lib/node_modules
 ```
 
 ## MacOS Cursor & Mouse Setup
