@@ -18,7 +18,7 @@
 Copy .bash_profile to ~/.bash_profile
 
 ```
-brew install bash bash-completion@2
+brew install bash bash-completion
 echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
 chsh -s /usr/local/bin/bash
 
@@ -33,7 +33,7 @@ BASH_PREVIEW=true shit reload
 
 brew install coreutils autojump grep lrzsz ncdu
 brew install mysql-client@5.7
-chown -R rockid:staff /usr/local/lib/node_modules
+brew install node@10
 ```
 
 ## MacOS Cursor & Mouse Setup
