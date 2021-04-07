@@ -139,7 +139,6 @@ source <(kubectl completion bash) # setup autocomplete in bash into the current 
 
 export GO111MODULE=on
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-export KUBECONFIG=~/.kube/staging-config:~/.kube/config:~/.kube/oa-config:~/.kube/enterprise-config:~/.kube/ide-staging-config:~/.kube/wuhaili-config:~/.kube/ide-prod-config
 
 # If not running interactively, don't do anything
 case $- in
