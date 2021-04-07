@@ -1,4 +1,4 @@
-# Bash & Iterm2 enviroment for Rockid
+# Bash & Iterm2 Setup
 
 ## Requirement
 
@@ -16,7 +16,7 @@
 
 ## Bash5 MacOS Setup
 
-Copy .bash_profile to ~/.bash_profile
+#### Copy .bash_profile to ~/.bash_profile
 
 ```
 brew install bash bash-completion
@@ -34,18 +34,6 @@ source ~/.bash_profile
 
 brew install wget coreutils autojump grep lrzsz ncdu
 brew install mysql-client@5.7
-```
-
-## MacOS Cursor & Mouse Setup
-```
-# Turn off mouse acceleration
-defaults write .GlobalPreferences com.apple.mouse.scaling -1
-
-# Turn off scrolling acceleration
-defaults write .GlobalPreferences com.apple.scrollwheel.scaling -1
-
-# Adjust cursor speed to unlimit
-defaults write NSGlobalDomain KeyRepeat -int 0
 ```
 
 ## Font & Theme
