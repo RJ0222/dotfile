@@ -2,8 +2,8 @@
 
 ## Requirement
 
-- Java 8
-- Python 3
+- JDK 1.8
+- Python 3.x
 
 ## Iterm2 Macos Setup
 
@@ -47,3 +47,12 @@ defaults write .GlobalPreferences com.apple.scrollwheel.scaling -1
 # Adjust cursor speed to unlimit
 defaults write NSGlobalDomain KeyRepeat -int 0
 ```
+
+## Font & Theme
+
+- https://github.com/powerline/fonts
+- https://github.com/Bash-it/bash-it
+- https://github.com/dracula/dracula-theme
+- https://github.com/Karmenzind/monaco-nerd-fonts
+- https://github.com/ryanoasis/nerd-fonts
+
