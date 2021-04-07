@@ -1,3 +1,7 @@
+" FileType On
+filetype plugin indent on
+syntax on
+
 " Common configuration
 set encoding=UTF-8
 set nocompatible
@@ -9,8 +13,7 @@ set listchars=tab:>>,trail:.,extends:>
 set expandtab
 set backspace=indent,eol,start
 set ruler " show line number of cursor
-filetype plugin indent on
-syntax on
+set colorcolumn=120
 let &winheight = &lines * 7 / 10
 
 " Common file tab settings
@@ -25,11 +28,6 @@ set autoindent
 set incsearch   " show match cases when inputting
 set hlsearch
 set ignorecase  " Ignore case when searching
-
-" Color settings
-colorscheme molokai
-set termguicolors
-let g:sublimemonokai_term_italic = 1
 
 " Command line configuration
 set wildmenu
@@ -132,8 +130,15 @@ au BufNewFile,BufRead *.py
 " Start vim-plug configuration now
 call plug#begin("~/.vim/plugged")
 
+" " Color settings
+" colorscheme molokai
+" set termguicolors
+" let g:sublimemonokai_term_italic = 1
+Plug 'dracula/vim', { 'as': 'dracula' }
+
 " Status Line
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Nginx
 Plug 'chr4/nginx.vim'
@@ -174,6 +179,8 @@ Plug 'tpope/vim-fugitive'
 
 " COC Plug
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+
+"
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
@@ -184,14 +191,17 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+" Flake8 vim plugin
 Plug 'nvie/vim-flake8'
 autocmd FileType python map   :call Flake8()
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'errcheck']
 let g:flake8_ignore="E501,W293,E306"
 let g:flake8_max_line_length = 99
 let g:syntastic_python_flake8_exec = '/usr/local/bin/python3'
 let g:syntastic_python_python_exec = '/usr/local/bin/python3'
 let g:syntastic_python_flake8_args = ['-m', 'flake8']
-let g:syntastic_check_on_open = 1
 let g:syntastic_python_pylint_post_args="--max-line-length=120"
 let python_highlight_all=1
 
@@ -204,6 +214,7 @@ let NERDTreeDirArrows=0
 let NERDTreeMapOpenSplit="s"
 let NERDTreeMapOpenVSplit="v"
 let NERDTreeWinSize=40
+let NERDTreeIgnore = ['\.pyc$', '\.swp$', '\.swo$']
 
 " https://github.com/junegunn/vim-plug/wiki/faq#whats-the-deal-with-git-in-the-url
 Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
@@ -224,6 +235,19 @@ let g:NERDTreeIndicatorMapCustom = {
 autocmd vimenter * if !argc() | NERDTree | endif
 
 " Go settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim-go Cheet Sheet
+" :GoRun :GoBuild :GoInstall
+"
+" :GoDef          # goto definition of object under cursor
+" gd              # also has the same effect
+"
+" Ctrl-O          # hop back to your source file/return to definition
+"
+" :GoDoc          # opens up a side window for quick documentationn
+" K / Leader + d  # also has the same effect
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
 let g:go_autodetect_gopath = 1
@@ -237,6 +261,7 @@ let g:go_highlight_methods = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_generate_tags = 1
 
+" Set autoCommand for golang while started
 augroup go
 autocmd!
 " Show by default 4 spaces for a tab
@@ -277,9 +302,10 @@ function! s:build_go_files()
   endif
 endfunction
 
-" Plug for js
+" Plug for JS
 Plug 'marijnh/tern_for_vim'
 
+" Plug for Vue
 Plug 'posva/vim-vue'
 au BufNewFile,BufRead *.html,*.js,*.vue set tabstop=2
 au BufNewFile,BufRead *.html,*.js,*.vue set softtabstop=2
@@ -299,3 +325,7 @@ let g:ctrlp_working_path_mode = 'cra'
 
 " All of your Plugs must be added before the following line
 call plug#end()
+
+colorscheme dracula
+let g:airline_theme='tomorrow'
+
