@@ -33,7 +33,7 @@ source ~/.bash_profile
 # BASH_PREVIEW=true shit reload
 
 brew install wget coreutils autojump grep lrzsz ncdu
-brew install mysql-client@5.7
+brew install mysql-client@5.7 && brew link mysql-client@5.7
 ```
 
 ## Font & Theme

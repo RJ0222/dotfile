@@ -119,16 +119,17 @@ if [ -n "$BASH_VERSION" ]; then
     [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 fi
 
-export GOPATH=~/Project/gopath
+export GOPATH=~/Projects/gopath
 export GOBIN=$GOPATH/bin
 export GOTRACEBACK=crash
+export GOPROXY=https://goproxy.io,direct
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/Users/rockid/Scripts/bin/
 export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 export PATH=/usr/local/opt/grep/libexec/gnubin:$PATH
+export PATH=/usr/local/opt/mysql-client@5.7/bin:$PATH
+export PATH=/usr/local/opt/node@10/bin:$PATH
 export PATH=/usr/local/bin:$PATH
-export PATH=/usr/local/Cellar/mysql@5.7/5.7.26/bin/:$PATH
-export PATH="/usr/local/opt/node@10/bin:$PATH"
 export PYTHON3PATH=/Users/rockid/Scripts/python/modules
 
 eval "$(direnv hook bash)"
