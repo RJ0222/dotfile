@@ -2,6 +2,7 @@
 filetype plugin indent on
 syntax on
 
+set maxmempattern=20000000
 " Common configuration
 set encoding=UTF-8
 set nocompatible
@@ -55,6 +56,8 @@ set updatetime=300
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 
+set re=1
+
 " always show signcolumns
 set signcolumn=yes
 
@@ -73,50 +76,9 @@ nnoremap <space> za
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
 " Autocomplete {} [] () etc...
-function! QuoteDelim(char)
-  let line = getline('.')
-  let col = col('.')
-  if line[col - 2] == "\\"
-      " Inserting a quoted quotation mark into the string
-      return a:char
-  elseif line[col - 1] == a:char
-      " Escaping out of the string
-      return "\<Right>"
-  else
-      " Starting a string
-      return a:char.a:char."\<Esc>i"
-  endif
-endfunction!
-
-function! CloseBracket()
-    let line = getline('.')
-    if line =~# '^\s*\(struct\|class\|enum\) '
-        return "{\<Enter>};\<Esc>O"
-    elseif searchpair('(', '', ')', 'bmn', '', line('.'))
-        " Probably inside a function call. Close it off.
-        return "{\<Enter>});\<Esc>O"
-    else
-        return "{\<Enter>}\<Esc>O"
-    endif
-endfunction
-
-function ClosePair(char)
-    if getline('.')[col('.') - 1] == a:char
-        return "\<Right>"
-    else
-        return a:char
-    endif
-endf
-
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
 inoremap { {}<Esc>i
-autocmd Syntax html,vim inoremap < <lt>><Esc>i| inoremap > <c-r>=ClosePair('>')<CR>
-inoremap ) <c-r>=ClosePair(')')<CR>
-inoremap ] <c-r>=ClosePair(']')<CR>
-inoremap } <c-r>=CloseBracket()<CR>
-inoremap " <c-r>=QuoteDelim('"')<CR>
-inoremap ' <c-r>=QuoteDelim("'")<CR>
 
 " Python indent settings
 au BufNewFile,BufRead *.py
@@ -130,11 +92,14 @@ au BufNewFile,BufRead *.py
 " Start vim-plug configuration now
 call plug#begin("~/.vim/plugged")
 
-" " Color settings
+" Color settings
 " colorscheme molokai
-" set termguicolors
-" let g:sublimemonokai_term_italic = 1
-Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'phanviet/vim-monokai-pro'
+let g:sublimemonokai_term_italic = 1
+set termguicolors
+colorscheme monokai_pro
+let g:airline_theme='tomorrow'
 
 " Status Line
 Plug 'vim-airline/vim-airline'
@@ -179,7 +144,6 @@ Plug 'tpope/vim-fugitive'
 
 " COC Plug
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
-
 " new verion of COC CheckBackspace
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
@@ -324,9 +288,9 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'cra'
 
+" auto complete brackets
+Plug 'echasnovski/mini.pairs'
+
 " All of your Plugs must be added before the following line
 call plug#end()
-
-colorscheme dracula
-let g:airline_theme='tomorrow'
 
